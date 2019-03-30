@@ -1,6 +1,6 @@
 variables:
   DOCROOT: "${CI_PROJECT_DIR}/vendor/mink/driver-testsuite/web-fixtures"
-  CHROME_DEBUG_URL: http://localhost:9222
+  CHROME_DEBUG_URL: http://127.0.0.1:9222
 
 stages:
   - test
@@ -10,9 +10,9 @@ stages:
   tags: [docker]
   retry: 2
   script:
-    - bin/wait-for-chrome.sh
     - composer install -o --prefer-dist --ansi --no-progress
     - test -z "${AUTOSTART_XVFB}" || sed -i '27s#^#//#' vendor/mink/driver-testsuite/tests/Basic/BasicAuthTest.php
+    - bin/wait-for-chrome.sh
     - vendor/bin/phpunit --colors=always
 
 PHP 5.6:
