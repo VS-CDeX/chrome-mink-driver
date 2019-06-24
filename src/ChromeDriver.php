@@ -1199,7 +1199,14 @@ JS;
     {
         $script = <<<JS
     if (element) {
-        element.dispatchEvent(new Event('$event'));
+        try {
+            element.dispatchEvent(new Event('$event'));
+        } catch (error) {
+            event = document.createEvent('Events');
+            event.initEvent('$event', true, true);
+        
+            element.dispatchEvent(event);
+        }
     }
     element != null
 JS;
