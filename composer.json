@@ -5,7 +5,7 @@
             "url": "https://github.com/adorin/driver-testsuite.git"
         }
     ],
-    "name": "dmore/chrome-mink-driver",
+    "name": "vs-cdex/chrome-mink-driver",
     "description": "Mink driver for controlling chrome without selenium",
     "type": "library",
     "license": "MIT",
